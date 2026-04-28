@@ -50,9 +50,6 @@ github_api_testing_framework/
 ├── utils/
 │   ├── assertions.py
 │   └── schemas.py
-├── reports/
-├── .github/workflows/api-tests.yml
-├── .env.example
 ├── pytest.ini
 └── requirements.txt
 ```
