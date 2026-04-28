@@ -63,11 +63,7 @@ python -m venv .venv
 Activate it:
 
 ```bash
-# macOS / Linux
 source .venv/bin/activate
-
-# Windows PowerShell
-.venv\Scripts\Activate.ps1
 ```
 
 Install dependencies:
@@ -79,13 +75,7 @@ pip install -r requirements.txt
 Create your local `.env` file:
 
 ```bash
-cp .env.example .env
-```
-
-Optional: add a GitHub token to avoid low unauthenticated rate limits.
-
-```env
-GITHUB_TOKEN=your_token_here
+touch .env
 ```
 
 ## Run tests
