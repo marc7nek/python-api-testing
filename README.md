@@ -104,7 +104,7 @@ Edit `.env`:
 
 ```env
 BASE_URL=https://api.github.com
-GITHUB_API_VERSION=2022-11-28
+GITHUB_API_VERSION=2026-03-10
 GITHUB_TOKEN=
 DEMO_USERNAME=octocat
 DEMO_OWNER=octocat
