@@ -29,3 +29,16 @@ RATE_LIMIT_SCHEMA = {
         "rate": {"type": "object"},
     },
 }
+
+ISSUE_SCHEMA = {
+    "type": "object",
+    "required": ["id", "number", "state", "html_url", "user", "title"],
+    "properties": {
+        "id": {"type": "integer"},
+        "number": {"type": "integer"},
+        "state": {"type": "string", "enum": ["open", "closed"]},
+        "html_url": {"type": "string", "format": "uri"},
+        "user": {"type": "object"},
+        "title": {"type": "string"},
+    },
+}

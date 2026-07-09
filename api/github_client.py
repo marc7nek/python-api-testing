@@ -8,10 +8,16 @@ class GitHubClient(BaseClient):
     def get_repository(self, owner: str, repo: str):
         return self.get(f"/repos/{owner}/{repo}")
 
-    def list_repository_issues(self, owner: str, repo: str, state: str = "open"):
+    def list_repository_issues(
+        self,
+        owner: str,
+        repo: str,
+        state: str = "open",
+        per_page: int = 10,
+    ):
         return self.get(
             f"/repos/{owner}/{repo}/issues",
-            params={"state": state, "per_page": 10},
+            params={"state": state, "per_page": per_page},
         )
 
     def get_rate_limit(self):

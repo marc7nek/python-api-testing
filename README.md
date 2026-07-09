@@ -13,6 +13,7 @@ A demo Python API automation framework for testing GitHub REST API endpoints.
 - python-dotenv
 - jsonschema
 - PyGithub
+- ruff
 
 ## What this framework covers
 
@@ -82,6 +83,8 @@ cp .env.example .env
 
 ## Run tests
 
+You can use `python -m pytest` directly or the included `Makefile` shortcuts.
+
 Run all tests:
 
 ```bash
@@ -114,6 +117,16 @@ Run tests and generate HTML report:
 python -m pytest --html=reports/report.html --self-contained-html
 ```
 
+Equivalent shortcuts:
+
+```bash
+make test
+make test-unit
+make test-live
+make report
+make smoke
+```
+
 ## Configuration
 
 Edit `.env`:
@@ -126,7 +139,12 @@ DEMO_USERNAME=octocat
 DEMO_OWNER=octocat
 DEMO_REPO=Hello-World
 REQUEST_TIMEOUT=15
+RETRY_TOTAL=2
+RETRY_BACKOFF_FACTOR=0.3
+API_DEBUG=false
 ```
+
+Set `API_DEBUG=true` to log request and response details while debugging.
 
 ## Notes
 

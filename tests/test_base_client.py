@@ -5,7 +5,11 @@ from api.base_client import BaseClient
 class DummySession:
     def __init__(self):
         self.headers = {}
+        self.mount_calls = []
         self.request_calls = []
+
+    def mount(self, prefix, adapter):
+        self.mount_calls.append((prefix, adapter))
 
     def request(self, **kwargs):
         self.request_calls.append(kwargs)
@@ -38,3 +42,12 @@ def test_base_client_sets_expected_github_headers(monkeypatch):
     assert session.headers["Accept"] == "application/vnd.github+json"
     assert session.headers["X-GitHub-Api-Version"] == base_client.settings.api_version
     assert session.headers["User-Agent"] == "python-api-automation-framework"
+
+
+def test_base_client_configures_retries(monkeypatch):
+    session = DummySession()
+    monkeypatch.setattr(base_client.requests, "Session", lambda: session)
+
+    BaseClient()
+
+    assert [prefix for prefix, _ in session.mount_calls] == ["https://", "http://"]

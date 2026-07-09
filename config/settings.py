@@ -14,6 +14,9 @@ class Settings:
     demo_owner: str = os.getenv("DEMO_OWNER", "octocat")
     demo_repo: str = os.getenv("DEMO_REPO", "Hello-World")
     request_timeout: int = int(os.getenv("REQUEST_TIMEOUT", "15"))
+    retry_total: int = int(os.getenv("RETRY_TOTAL", "2"))
+    retry_backoff_factor: float = float(os.getenv("RETRY_BACKOFF_FACTOR", "0.3"))
+    api_debug: bool = os.getenv("API_DEBUG", "false").lower() == "true"
 
 
 settings = Settings()

@@ -1,5 +1,10 @@
 import pytest
-from utils.assertions import assert_status_code, assert_response_time_under
+from utils.assertions import (
+    assert_json_schema,
+    assert_response_time_under,
+    assert_status_code,
+)
+from utils.schemas import ISSUE_SCHEMA
 
 
 @pytest.mark.live
@@ -9,6 +14,7 @@ def test_list_repository_issues(github_client, demo_repo):
         demo_repo["owner"],
         demo_repo["repo"],
         state="all",
+        per_page=10,
     )
 
     assert_status_code(response, 200)
@@ -18,6 +24,4 @@ def test_list_repository_issues(github_client, demo_repo):
     assert isinstance(body, list)
 
     if body:
-        assert "id" in body[0]
-        assert "state" in body[0]
-        assert "html_url" in body[0]
+        assert_json_schema(body[0], ISSUE_SCHEMA)
