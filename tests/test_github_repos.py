@@ -7,6 +7,7 @@ from utils.assertions import (
 from utils.schemas import REPOSITORY_SCHEMA
 
 
+@pytest.mark.live
 @pytest.mark.smoke
 def test_get_existing_repository(github_client, demo_repo):
     response = github_client.get_repository(demo_repo["owner"], demo_repo["repo"])
@@ -20,6 +21,7 @@ def test_get_existing_repository(github_client, demo_repo):
     assert body["name"].lower() == demo_repo["repo"].lower()
 
 
+@pytest.mark.live
 @pytest.mark.negative
 def test_get_non_existing_repository_returns_404(github_client):
     response = github_client.get_repository("octocat", "repo-that-does-not-exist-987654321")

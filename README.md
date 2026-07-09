@@ -57,7 +57,7 @@ github_api_testing_framework/
 ## Setup
 
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 ```
 
 Activate it:
@@ -75,7 +75,7 @@ pip install -r requirements.txt
 Create your local `.env` file:
 
 ```bash
-touch .env
+cp .env.example .env
 ```
 
 ## Run tests
@@ -84,6 +84,20 @@ Run all tests:
 
 ```bash
 pytest
+```
+
+Run tests that do not call the real GitHub API:
+
+```bash
+pytest -m "not live"
+```
+
+This is the default CI path and should stay stable without network access to GitHub.
+
+Run tests that call the real GitHub API:
+
+```bash
+pytest -m live
 ```
 
 Run smoke tests only:

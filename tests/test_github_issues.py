@@ -2,6 +2,7 @@ import pytest
 from utils.assertions import assert_status_code, assert_response_time_under
 
 
+@pytest.mark.live
 @pytest.mark.regression
 def test_list_repository_issues(github_client, demo_repo):
     response = github_client.list_repository_issues(

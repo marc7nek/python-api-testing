@@ -3,6 +3,7 @@ from utils.assertions import assert_status_code, assert_json_schema
 from utils.schemas import RATE_LIMIT_SCHEMA
 
 
+@pytest.mark.live
 @pytest.mark.smoke
 def test_get_rate_limit_status(github_client):
     response = github_client.get_rate_limit()

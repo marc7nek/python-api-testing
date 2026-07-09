@@ -7,6 +7,7 @@ from utils.assertions import (
 from utils.schemas import USER_SCHEMA
 
 
+@pytest.mark.live
 @pytest.mark.smoke
 def test_get_existing_github_user(github_client, demo_user):
     response = github_client.get_user(demo_user)
@@ -19,6 +20,7 @@ def test_get_existing_github_user(github_client, demo_user):
     assert body["login"].lower() == demo_user.lower()
 
 
+@pytest.mark.live
 @pytest.mark.negative
 def test_get_non_existing_github_user_returns_404(github_client):
     response = github_client.get_user("this-user-should-not-exist-987654321")
