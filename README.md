@@ -69,7 +69,7 @@ source .venv/bin/activate
 Install dependencies:
 
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 Create your local `.env` file:
@@ -83,13 +83,13 @@ cp .env.example .env
 Run all tests:
 
 ```bash
-pytest
+python -m pytest
 ```
 
 Run tests that do not call the real GitHub API:
 
 ```bash
-pytest -m "not live"
+python -m pytest -m "not live"
 ```
 
 This is the default CI path and should stay stable without network access to GitHub.
@@ -97,19 +97,19 @@ This is the default CI path and should stay stable without network access to Git
 Run tests that call the real GitHub API:
 
 ```bash
-pytest -m live
+python -m pytest -m live
 ```
 
 Run smoke tests only:
 
 ```bash
-pytest -m smoke
+python -m pytest -m smoke
 ```
 
 Run tests and generate HTML report:
 
 ```bash
-pytest --html=reports/report.html --self-contained-html
+python -m pytest --html=reports/report.html --self-contained-html
 ```
 
 ## Configuration
