@@ -2,6 +2,8 @@
 
 A demo Python API automation framework for testing GitHub REST API endpoints.
 
+![Example report from execution](report.png)
+
 ## Stack
 
 - Python 3.10+
